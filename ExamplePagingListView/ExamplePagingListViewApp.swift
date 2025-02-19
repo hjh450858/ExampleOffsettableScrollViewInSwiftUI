@@ -11,9 +11,9 @@ import SwiftUI
 struct ExamplePagingListViewApp: App {
     var body: some Scene {
         WindowGroup {
-//            ContentView()
+            ContentView()
 //            PagingView()
-            ListPagingWithGeometryReader()
+//            ListPagingWithGeometryReader()
         }
     }
 }
