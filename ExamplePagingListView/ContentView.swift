@@ -14,10 +14,12 @@ struct ContentView: View {
     // offset
     @State private var offset: CGFloat = 0.0
     
+    @State private var offsetText: String = ""
     var body: some View {
         VStack {
-            Text("offset : \(String(format: "%.2f", offset))")
-                .frame(maxWidth: .infinity)
+//            Text("offset : \(String(format: "%.2f", offset))")
+            OffsetLabel(text: $offsetText)
+                .frame(maxWidth: .infinity, maxHeight: 40)
                 .padding()
                 .background(Color.yellow)
             
@@ -25,6 +27,7 @@ struct ContentView: View {
             OffsettableScrollView { point in
                 // point 변경 시 호출
                 offset = point.y
+                offsetText = "\(String(format: "%.2f", offset))"
                 print("offset = \(offset)")
             } content: {
                 LazyVStack {
@@ -35,6 +38,20 @@ struct ContentView: View {
                 }
             }
         }
+    }
+}
+
+/// offset을 보여주는 라벨
+struct OffsetLabel: UIViewRepresentable {
+    @Binding var text: String
+    
+    func makeUIView(context: Context) -> UILabel {
+        let label = UILabel()
+        label.textColor = .red
+        return label
+    }
+    func updateUIView(_ uiView: UILabel, context: Context) {
+        uiView.text = "offset: \(text)"
     }
 }
 
