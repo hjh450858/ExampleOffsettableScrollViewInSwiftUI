@@ -21,7 +21,7 @@ struct ListPagingWithGeometryReader: View {
                         .padding()
                         .frame(maxWidth: .infinity)
                         .background(Color.blue.opacity(0.1))
-                        .cornerRadius(10)
+                        .cornerRadius(8)
                 }
                 
                 // 페이징 감지용 GeometryReader 추가
